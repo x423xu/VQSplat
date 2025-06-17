@@ -1,0 +1,45 @@
+defaults:
+  - dataset: re10k
+  - optional dataset/view_sampler_dataset_specific_config: ${dataset/view_sampler}_${dataset}
+
+dataset:
+  overfit_to_scene: null
+
+data_loader:
+  # Avoid having to spin up new processes to print out visualizations.
+  train:
+    num_workers: 16
+    persistent_workers: true
+    batch_size: 2
+    seed: 1234
+  test:
+    num_workers: 4
+    persistent_workers: false
+    batch_size: 1
+    seed: 2345
+  val:
+    num_workers: 1
+    persistent_workers: true
+    batch_size: 1
+    seed: 3456
+
+
+train:
+  depth_mode: null
+  extended_visualization: false
+  step_offset: 0
+  video_interpolation: false
+  video_wobble: false
+
+wandb:
+  project: VQSplat
+  entity: placeholder
+  name: placeholder
+  mode: online
+  activated: true
+
+
+mode: train
+
+
+seed: 123456
